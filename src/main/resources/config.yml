@@ -30,7 +30,7 @@ TokenCountInCrafting: 1
 
 # Setting this to 1 will use this plugin as the only server resource pack. If your server has its own resource pack, set EnableResourcePack to 0 and locally install
 # the resource pack to the client
-EnableResourcePack: 1
+EnableResourcePack: 0
 BaseMaterial: COPPER_INGOT
 CustomModelData: 2 #Change this if you have our own Resource Pack and set that number
 

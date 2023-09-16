@@ -36,7 +36,7 @@ public final class KeepInventoryTokenPlugin extends JavaPlugin {
         registerTokenRecipe();
 
         getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(this), this);
-        getServer().getPluginManager().registerEvents(new AnvilRenameListener(), this);
+        getServer().getPluginManager().registerEvents(new AnvilRenameListener(this), this);
         getServer().getPluginManager().registerEvents(new PrepareCraftListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
@@ -62,7 +62,7 @@ public final class KeepInventoryTokenPlugin extends JavaPlugin {
         int count = config.getInt("TokenCountInCrafting");
         ItemStack token = new KeepInventoryToken(this, count).getToken();
 
-        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "tptoken"), token);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "kitoken"), token);
         recipe.shape(
                 "ABC",
                 "DEF",

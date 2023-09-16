@@ -5,6 +5,7 @@ import me.alzen.keepinventorytoken.model.KeepInventoryToken;
 import me.alzen.keepinventorytoken.utils.YamlFileManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,6 +37,8 @@ public class PlayerJoinEventListener implements Listener {
             if(YamlFileManager.getInt(String.valueOf(uuid)) == 0){
                 giveToken(player);
             }
+
+
         }
     }
 
@@ -46,6 +49,8 @@ public class PlayerJoinEventListener implements Listener {
             player.getInventory().addItem(new KeepInventoryToken(instance, count).getToken());
             player.sendMessage(ChatColor.LIGHT_PURPLE + "You received " + count + " Keep Inventory tokens.");
             YamlFileManager.setData(path, 1);
+
+            player.discoverRecipe(new NamespacedKey(instance, "kitoken"));
         }else{
             player.sendMessage(ChatColor.LIGHT_PURPLE + "Unable to give you Keep Inventory Token. Please free up a slot in your inventory and rejoin.");
             YamlFileManager.setData(path, 0);

@@ -30,13 +30,13 @@ public class CommandListener implements CommandExecutor {
      * @return
      */
     @Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-	{
-		String commandName = cmd.getName().toLowerCase();
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+    {
+        String commandName = cmd.getName().toLowerCase();
 
         // invalid args
         if(args.length != 2) {
-           return false;
+        return false;
         }
 
         // player not found

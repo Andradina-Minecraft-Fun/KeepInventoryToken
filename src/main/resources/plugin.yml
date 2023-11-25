@@ -5,3 +5,9 @@ api-version: '1.16'
 authors: [Alzen]
 description: Plugin that allows crafting of Keep Inventory token and use its effect.
 website: https://www.spigotmc.org/resources/authors/alzen.1861423/
+
+commands:
+  givetoken:
+    description: Give token to a player
+    usage: /givetoken <player> <amount>
+    permission: keepinventorytoken.give

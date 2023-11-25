@@ -1,6 +1,7 @@
 package me.alzen.keepinventorytoken;
 
 import me.alzen.keepinventorytoken.eventlisteners.AnvilRenameListener;
+import me.alzen.keepinventorytoken.eventlisteners.CommandListener;
 import me.alzen.keepinventorytoken.eventlisteners.PlayerDeathListener;
 import me.alzen.keepinventorytoken.eventlisteners.PlayerJoinEventListener;
 import me.alzen.keepinventorytoken.eventlisteners.PrepareCraftListener;
@@ -44,6 +45,8 @@ public final class KeepInventoryTokenPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AnvilRenameListener(this), this);
         getServer().getPluginManager().registerEvents(new PrepareCraftListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
+        // getServer().getPluginManager().registerEvents(new CommandListener(this), this);
+        getCommand("givetoken").setExecutor(new CommandListener(this));
 
         getLogger().info(line);
         getLogger().info("Keep Inventory Token Plugin Enabled!");

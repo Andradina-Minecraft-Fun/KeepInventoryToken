@@ -33,7 +33,12 @@ public final class KeepInventoryTokenPlugin extends JavaPlugin {
         YamlFileManager.getConfigurationFile().options().copyDefaults();
         YamlFileManager.save();
 
-        registerTokenRecipe();
+
+        // @todo maybe keep it global, and possible to reload it with command?
+        FileConfiguration config = this.getConfig();
+        if(config.getBoolean("EnableCraft")) {
+            registerTokenRecipe();
+        }
 
         getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(this), this);
         getServer().getPluginManager().registerEvents(new AnvilRenameListener(this), this);

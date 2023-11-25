@@ -10,6 +10,7 @@
 #   |   G   |   H   |   I   |
 #   -------------------------
 #
+EnableCraft: true
 TeleportationTokenRecipe:
   A: POPPED_CHORUS_FRUIT
   B: GILDED_BLACKSTONE

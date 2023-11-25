@@ -1,7 +1,0 @@
-name: KeepInventoryToken
-version: '1.0'
-main: me.alzen.keepinventorytoken.KeepInventoryTokenPlugin
-api-version: '1.16'
-authors: [Alzen]
-description: Plugin that allows crafting of Keep Inventory token and use its effect.
-website: https://www.spigotmc.org/resources/authors/alzen.1861423/

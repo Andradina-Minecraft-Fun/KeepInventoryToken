@@ -47,6 +47,7 @@ public final class KeepInventoryTokenPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
         getCommand("givetoken").setExecutor(new CommandListener(this));
+        getCommand("reloadtoken").setExecutor(new CommandListener(this));
 
         getLogger().info(line);
         getLogger().info("Keep Inventory Token Plugin Enabled!");

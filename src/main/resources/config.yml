@@ -1,6 +1,9 @@
 # ALL CHANGES MADE TO THIS FILE REQUIRES A SERVER RESTART TO TAKE EFFECT!
-# Teleportation Token Shaped Recipe
-#
+
+# Enable recipe to players craft it?
+EnableCraft: true
+
+# Keep Inventory Token Recipe
 # This is how the items will be placed on the crafting table
 # 	-------------------------
 #   |   A   |   B   |   C   |
@@ -10,7 +13,6 @@
 #   |   G   |   H   |   I   |
 #   -------------------------
 #
-EnableCraft: true
 TeleportationTokenRecipe:
   A: POPPED_CHORUS_FRUIT
   B: GILDED_BLACKSTONE
@@ -22,6 +24,11 @@ TeleportationTokenRecipe:
   H: BLAZE_POWDER
   I: POPPED_CHORUS_FRUIT
 TokenCountInCrafting: 1
+
+# Lore, to customize or translate
+Lore:
+  - Having this token in your main inventory will
+  - prevent losing your items and exp on death.
 
 # Resource Pack. Change the link of the resource pack that you want to use.
 # Take note that the token will be using the item thas is specified in BaseMaterial.

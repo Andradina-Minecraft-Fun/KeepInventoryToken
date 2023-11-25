@@ -34,37 +34,60 @@ public class CommandListener implements CommandExecutor {
     {
         String commandName = cmd.getName().toLowerCase();
 
-        // invalid args
-        if(args.length != 2) {
+        // verify command if its reload (for now, just reload the lore)
+        if(commandName.equalsIgnoreCase("reloadtoken")) {
+
+            // reload config
+            pluginInstance.reloadConfig();
+
+            // @todo
+            // verify if recipe are registerd
+            // if yes, unregister
+            // verify if need to register again
+            // if yes, register
+
+            sender.sendMessage("Recarregado");
+            
+            return true;
+        }
+
+        // if give command
+        else if (commandName.equalsIgnoreCase("givetoken")) {
+
+            // invalid args
+            if(args.length != 2) {
+                return false;
+            }
+
+            // player not found
+            Player targetPlayer = (Player)sender.getServer().getPlayer(args[0]);
+            if(targetPlayer == null) {
+                sender.sendMessage("Player not found");
+                return true;
+            }
+
+            if(!targetPlayer.isOnline()) {
+                sender.sendMessage("Player not online");
+                return true;
+            }
+
+            // invetory full
+            if(!checkIfInventorySlotAvailable(targetPlayer)) {
+                sender.sendMessage("Player has inventary full");
+                return true;
+            }
+
+            // give token
+            int count = Integer.valueOf(args[1]);
+            targetPlayer.getInventory().addItem(new KeepInventoryToken(pluginInstance, count).getToken());
+            targetPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "You received " + count + " Keep Inventory tokens");
+
+            sender.sendMessage("You add " + count + " Keep Inventory tokens to " + targetPlayer.getName());
+
+            return true;
+        }
+
         return false;
-        }
-
-        // player not found
-        Player targetPlayer = (Player)sender.getServer().getPlayer(args[0]);
-        if(targetPlayer == null) {
-            sender.sendMessage("Player not found");
-            return true;
-        }
-
-        if(!targetPlayer.isOnline()) {
-            sender.sendMessage("Player not online");
-            return true;
-        }
-
-        // invetory full
-        if(!checkIfInventorySlotAvailable(targetPlayer)) {
-            sender.sendMessage("Player has inventary full");
-            return true;
-        }
-
-        // give token
-        int count = Integer.valueOf(args[1]);
-        targetPlayer.getInventory().addItem(new KeepInventoryToken(pluginInstance, count).getToken());
-        targetPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "You received " + count + " Keep Inventory tokens");
-
-        sender.sendMessage("You add " + count + " Keep Inventory tokens to " + targetPlayer.getName());
-
-        return true;
     }
 
     /**

@@ -11,3 +11,7 @@ commands:
     description: Give token to a player
     usage: /givetoken <player> <amount>
     permission: keepinventorytoken.give
+  reloadtoken:
+    description: Reload config
+    usage: /reloadtoken
+    permission: keepinventorytoken.reload

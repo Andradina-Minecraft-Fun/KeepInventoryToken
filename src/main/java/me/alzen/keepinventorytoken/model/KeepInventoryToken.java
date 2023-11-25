@@ -1,6 +1,9 @@
 package me.alzen.keepinventorytoken.model;
 
+import java.util.ArrayList;
 import me.alzen.keepinventorytoken.KeepInventoryTokenPlugin;
+
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -21,11 +24,15 @@ public class KeepInventoryToken {
 
         if(itemMeta != null) {
             itemMeta.setDisplayName("Keep Inventory Token");
-            String[] lore = {
-                    "Having this token in your main inventory will",
-                    "prevent losing your items and exp on death."
-            };
-            itemMeta.setLore(Arrays.asList(lore));
+
+            // loop config Lore
+            ArrayList<String> lore = new ArrayList<String>();
+            config.getStringList("Lore").forEach(str -> {
+                lore.add(ChatColor.translateAlternateColorCodes('&', str));
+            });
+
+            // add lore to item
+            itemMeta.setLore(lore);
             itemMeta.setCustomModelData(customModelData);
         }
         token.setItemMeta(itemMeta);
